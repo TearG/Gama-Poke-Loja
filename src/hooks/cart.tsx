@@ -24,7 +24,9 @@ interface CartContext {
 }
 
 const CartContext = createContext<CartContext | null>(null);
-const CartProvider: React.FC = ({ children }) => {
+const CartProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [items, setitems] = useState<Item[]>([]);
 
   useEffect(() => {
@@ -40,7 +42,7 @@ const CartProvider: React.FC = ({ children }) => {
   }, []);
 
   const increment = useCallback(
-    async (id) => {
+    async (id: string) => {
       const newitem = items.findIndex((item) => item.id === id);
       if (newitem >= 0) {
         const updateditems = [...items];
@@ -55,7 +57,7 @@ const CartProvider: React.FC = ({ children }) => {
   );
 
   const decrement = useCallback(
-    async (id) => {
+    async (id: string) => {
       const filterItems = items.filter((item) => item.id !== id);
       const newitem = items.findIndex((item) => item.id === id);
       if (newitem >= 0) {
@@ -74,7 +76,7 @@ const CartProvider: React.FC = ({ children }) => {
   );
 
   const remove = useCallback(
-    async (id) => {
+    async (id: string) => {
       const filterItems = items.filter((item) => item.id !== id);
       const newitem = items.findIndex((item) => item.id === id);
       if (newitem >= 0) {

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
-import { uuid } from 'uuidv4';
+import { v4 as uuid } from 'uuid';
 import {
   FiSearch,
   FiShoppingCart,
@@ -46,14 +46,8 @@ const Fire: React.FC = () => {
   const [searchResults, setSearchResults] = useState<Pokemon[]>([]);
   const [search, setSearch] = useState('');
 
-  const {
-    addToCart,
-    increment,
-    decrement,
-    remove,
-    items,
-    clearCart,
-  } = useCart();
+  const { addToCart, increment, decrement, remove, items, clearCart } =
+    useCart();
 
   const { addToast } = useToast();
 

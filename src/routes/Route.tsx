@@ -11,6 +11,7 @@ interface RouteProps extends ReactDOMRouteProps {
 const Route: React.FC<RouteProps> = ({ component: Component, ...rest }) => {
   return (
     <ReactDOMRoute
+      // eslint-disable-next-line react/jsx-props-no-spreading
       {...rest}
       render={() => {
         return <Component />;
